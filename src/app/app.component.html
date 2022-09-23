@@ -1,7 +1,81 @@
-<mat-toolbar>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-   <mat-icon>menu</mat-icon>
- </button>
- <span>Cravo&Canela</span>
- <span class="example-spacer"></span>
-</mat-toolbar>
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3" [ngClass]="{'bg-dark': isScrolled}">
+  <div class="container">
+    <a class="navbar-brand" href="#">Cravo & Canela</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="mx-auto"></div>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#">Cursos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#">Parceiros</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#">Cadastro</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div
+  class="banner-image w-100 vh-100 d-flex justify-content-center align-items-center"
+>
+  <div class="content text-center">
+    <h1 class="text-white">Conheça nossos cursos!</h1>
+  </div>
+</div>
+
+<div class="container my-5 d-grid gap-5">
+  <div class="p-5 border">
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus
+      veniam ipsa earum quibusdam, atque ipsum error maiores natus iusto fugit
+      id saepe neque rerum magni laudantium accusantium dolorem numquam quasi.
+    </p>
+  </div>
+  <div class="p-5 border">
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus
+      veniam ipsa earum quibusdam, atque ipsum error maiores natus iusto fugit
+      id saepe neque rerum magni laudantium accusantium dolorem numquam quasi.
+    </p>
+  </div>
+  <div class="p-5 border">
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus
+      veniam ipsa earum quibusdam, atque ipsum error maiores natus iusto fugit
+      id saepe neque rerum magni laudantium accusantium dolorem numquam quasi.
+    </p>
+  </div>
+  <div class="p-5 border">
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus
+      veniam ipsa earum quibusdam, atque ipsum error maiores natus iusto fugit
+      id saepe neque rerum magni laudantium accusantium dolorem numquam quasi.
+    </p>
+  </div>
+  <div class="p-5 border">
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus
+      veniam ipsa earum quibusdam, atque ipsum error maiores natus iusto fugit
+      id saepe neque rerum magni laudantium accusantium dolorem numquam quasi.
+      df
+    </p>
+  </div>
+</div>
