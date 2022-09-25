@@ -1,7 +1,8 @@
-import { AppMaterialModule } from './../../shared/app-material/app-material.module';
 import { SharedModule } from './../../shared/shared.module';
+import { AppMaterialModule } from './../../shared/app-material/app-material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -9,8 +10,8 @@ import { CommonModule } from '@angular/common';
   declarations: [],
   imports: [
     CommonModule,
-    SharedModule,
-    AppMaterialModule
+    AppMaterialModule,
+    SharedModule
   ]
 })
-export class HomePageModule { }
+export class AlunasModule { }

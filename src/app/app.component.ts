@@ -6,12 +6,6 @@ import { Component, HostListener } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'CravoECanela';
+  title = 'Cravo & Canela';
 
-  isScrolled = false;
-
-  @HostListener("window:scroll")
-  scrollEvent() {
-    window.pageYOffset >= 500 ? (this.isScrolled = true) : (this.isScrolled = false);
-  }
 }
