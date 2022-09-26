@@ -1,41 +1,107 @@
-<section class="container-sm container-md card mt-3">
-  <div class="card-body mx-auto">
-  <h1 class="text-center my-3">Novo por aqui? Cadastra-se e adoce a carreira de alguém.</h1>
-  <form class="row g-3">
-    <div class="col-md-6">
-    <label for="inputEmail4" class="form-label">Nome</label>
-    <input type="email" class="form-control" id="inputEmail4">
+<div class="container text-center my-3">
+  <h1>Novo por aqui? Cadastra-se e adoce a carreira de alguém.</h1>
+  <button class="btn btn btn-outline-success" (click)="openDialog()">Adicionar empresa</button>
+</div>
+
+<section class="container container-md container-sm">
+  <div class="text-start">
+    <h4>Nossos parceiros:</h4>
   </div>
-  <div class="col-md-6">
-    <label for="inputPassword4" class="form-label">Exemplo</label>
-    <input type="password" class="form-control" id="inputPassword4">
-  </div>
-  <div class="col-12">
-    <label for="inputAddress" class="form-label">Endereço</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-  </div>
-  <div class="col-12">
-    <label for="inputAddress2" class="form-label">Exemplo</label>
-    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-  </div>
-  <div class="col-md-6">
-    <label for="inputCity" class="form-label">Cidade</label>
-    <input type="text" class="form-control" id="inputCity">
-  </div>
-  <div class="col-md-4">
-    <label for="inputState" class="form-label">Estado</label>
-    <select id="inputState" class="form-select">
-      <option selected>Choose...</option>
-      <option>...</option>
-    </select>
-  </div>
-  <div class="col-md-2">
-    <label for="inputZip" class="form-label">CEP</label>
-    <input type="text" class="form-control" id="inputZip">
-  </div>
-  <div class="col-12">
-    <button type="submit" class="btn btn-primary">Salvar</button>
-  </div>
-</form>
+  <mat-form-field appearance="standard">
+    <mat-label>Filter</mat-label>
+    <input
+      matInput
+      (keyup)="applyFilter($event)"
+      placeholder="Ex. ium"
+      #input autocomplete="off"
+    />
+  </mat-form-field>
+
+  <div class="table-responsive-lg table-responsive-md table-responsive-sm">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 mb-3 table table-light table-striped">
+      <!-- Position Column -->
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef class="align-middle px-3">No.</th>
+        <td mat-cell *matCellDef="let element">{{ element.position }}</td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="nome">
+        <th mat-header-cell *matHeaderCellDef class="align-middle px-3">Nome</th>
+        <td mat-cell *matCellDef="let element">{{ element.nome }}</td>
+      </ng-container>
+
+      <!-- cnpj Column -->
+      <ng-container matColumnDef="cnpj">
+        <th mat-header-cell *matHeaderCellDef class="align-middle px-3">CNPJ</th>
+        <td mat-cell *matCellDef="let element">{{ element.cnpj }}</td>
+      </ng-container>
+
+      <!-- endereco Column -->
+      <ng-container matColumnDef="endereco">
+        <th mat-header-cell *matHeaderCellDef class="align-middle px-3">Endereço</th>
+        <td mat-cell *matCellDef="let element">{{ element.endereco }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="responsavel">
+        <th mat-header-cell *matHeaderCellDef class="align-middle px-3">Responsável</th>
+        <td mat-cell *matCellDef="let element">{{ element.responsavel }}</td>
+      </ng-container>
+
+    <ng-container matColumnDef="telefone">
+      <th mat-header-cell *matHeaderCellDef class="align-middle px-3">Telefone</th>
+      <td mat-cell *matCellDef="let element">{{ element.telefone }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef class="align-middle px-3">E-mail</th>
+      <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+    </ng-container>
+
+    <!-- Edit Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef class="align-middle px-3"></th>
+      <td mat-cell *matCellDef="let element">
+        <button
+        mat-icon-button
+        color="primary"
+        aria-label="Example icon button with a home icon"
+        >
+        <mat-icon>menu</mat-icon>
+      </button>
+      <button
+      mat-icon-button
+      color="primary"
+      aria-label="Example icon button with a home icon"
+      >
+      <mat-icon color="warn">delete_outline</mat-icon>
+    </button>
+  </td>
+</ng-container>
+
+<!-- Delete Column
+  <ng-container matColumnDef="deleteButton">
+    <th mat-header-cell *matHeaderCellDef class="align-middle px-3">Delete</th>
+    <td mat-cell *matCellDef="let element">
+      <button
+          mat-icon-button
+          color="primary"
+          aria-label="Example icon button with a home icon"
+          >
+          <mat-icon>delete_outline</mat-icon>
+        </button>
+      </td>
+    </ng-container> -->
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">
+        No data matching the filter "{{ input.value }}"
+      </td>
+    </tr>
+  </table>
 </div>
 </section>

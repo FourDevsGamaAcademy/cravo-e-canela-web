@@ -1,3 +1,6 @@
+import { AlunasModule } from './pages/alunas/alunas.module';
+import { AlunaCadastroComponent } from './pages/alunas/aluna-cadastro/aluna-cadastro.component';
+import { EmpresaCadastroComponent } from './pages/empresas/empresa-cadastro/empresa-cadastro.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { AppMaterialModule } from './shared/app-material/app-material.module';
 import { HomePageModule } from './pages/home-page/home-page.module';
@@ -14,13 +17,12 @@ import { CursosComponent } from './pages/cursos/cursos.component';
 import { CursosHistoricoComponent } from './pages/cursos-historico/cursos-historico.component';
 import { CursoListaComponent } from './pages/cursos-historico/curso-lista/curso-lista.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EmpresasModule } from './pages/empresas/empresas.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
-    AlunasComponent,
-    EmpresasComponent,
     CursosComponent,
     CursosHistoricoComponent,
     CursoListaComponent
@@ -32,7 +34,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AppMaterialModule,
     SharedModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    EmpresasModule,
+    AlunasModule
 
   ],
   providers: [],

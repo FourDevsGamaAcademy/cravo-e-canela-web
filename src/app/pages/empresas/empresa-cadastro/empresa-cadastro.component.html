@@ -1,9 +1,8 @@
-<section class="course">
-  <div class="container">
-    <h1 class="text-center my-3">Cadastre seu treinamento.</h1>
-  </div>
-  <section class="container-sm container-md card mt-3">
-    <div class="card-body mx-auto">
+
+<h2 mat-dialog-title>Complete seu cadastro</h2>
+<mat-dialog-content class="mat-typography">
+  <section class="container-sm container-md mt-3">
+    <div class="mx-auto">
     <form class="row g-3">
       <div class="col-md-6">
       <label for="inputEmail4" class="form-label">Nome</label>
@@ -36,12 +35,12 @@
       <label for="inputZip" class="form-label">CEP</label>
       <input type="text" class="form-control" id="inputZip">
     </div>
-    <div class="col-12">
-      <button type="submit" class="btn btn-primary">Salvar</button>
-    </div>
   </form>
   </div>
   </section>
-</section>
 
-
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close>Cancel</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Salvar</button>
+</mat-dialog-actions>
