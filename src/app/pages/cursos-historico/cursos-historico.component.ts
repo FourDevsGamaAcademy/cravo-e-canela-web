@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -5,14 +6,14 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './cursos-historico.component.html',
   styleUrls: ['./cursos-historico.component.scss']
 })
-export class CursosHistoricoComponent implements OnInit {
+export class CursosHistoricoComponent  {
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
-  ngOnInit(): void {
+  goTo(rota: string){
+    this.router.navigate([`/${rota}`]);
   }
 
-  cursos = [
-    {'id':1, 'name':'Cloud', 'empresa':''}
-  ]
 }

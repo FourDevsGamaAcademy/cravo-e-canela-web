@@ -1,3 +1,4 @@
+import { NgxMaskModule } from 'ngx-mask';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppMaterialModule } from './app-material/app-material.module';
 import { NgModule } from '@angular/core';
@@ -11,7 +12,8 @@ import { CommonModule } from '@angular/common';
     CommonModule,
     AppMaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxMaskModule.forChild(),
   ]
 })
 export class SharedModule { }

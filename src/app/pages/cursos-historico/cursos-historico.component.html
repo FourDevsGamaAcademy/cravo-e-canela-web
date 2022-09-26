@@ -1,13 +1,13 @@
-<section class="course my-3">
+<section class="container container-md container-sm course my-3">
   <div class="container">
     <h1 class="text-center">Todos cursos disponíveis em poucos cliques.</h1>
-    <div class="row row-cols-3 row-cols-md-4 g-4">
+    <div class="row row-cols-1 row-cols-md-4 row-cols-sm-2 g-4">
       <div class="col">
         <div class="card ">
           <img src="../../../assets/cloud.jpg" class="card-img-top" alt="...">
           <div class="card-body">
-            <h3 class="card-title">Cloud Computing</h3>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+            <h3 class="card-title"><strong>Cloud Computing</strong></h3>
+            <p class="card-text">É a entrega de serviços de computação sobre demanda, armazenamento, aplicativos e diversos outros recursos de TI.</p>
           </div>
         </div>
       </div>
@@ -15,8 +15,8 @@
         <div class="card">
           <img src="../../../assets/frontend.jpg" class="card-img-top" alt="...">
           <div class="card-body">
-            <h3 class="card-title">Programação Front-end</h3>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+            <h3 class="card-title"><strong>Programação Front-end</strong></h3>
+            <p class="card-text">É a criação de interfaces, ou seja, das partes de uma página com as quais o usuário pode interagir e executar ações. </p>
           </div>
         </div>
       </div>
@@ -24,8 +24,8 @@
         <div class="card">
           <img src="../../../assets/backend.jpg" class="card-img-top" alt="...">
           <div class="card-body">
-            <h3 class="card-title">Programação Back-end</h3>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+            <h3 class="card-title"><strong>Programação Back-end</strong></h3>
+            <p class="card-text">É o código que conecta a internet com o banco de dados, gerencia as conexões dos usuários e alimenta a aplicação web.</p>
           </div>
         </div>
       </div>
@@ -33,13 +33,15 @@
         <div class="card">
           <img src="../../../assets/database.jpg" class="card-img-top" alt="...">
           <div class="card-body">
-            <h3 class="card-title">Banco de dados</h3>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+            <h3 class="card-title"><strong>Banco de dados</strong></h3>
+            <p class="card-text">É uma coleção organizada de dados estruturadas, normalmente armazenadas eletronicamente em um sistema de computador.</p>
           </div>
         </div>
       </div>
     </div>
-
+  </div>
+  <div class="text-center my-3">
+    <button class="btn btn btn-outline-success"  (click)="goTo('/cursos-lista')">Acessar cursos!</button>
   </div>
 </section>
 <router-outlet></router-outlet>

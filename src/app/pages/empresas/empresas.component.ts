@@ -1,10 +1,11 @@
-import { Empresa } from './../../model/empresa.model';
+import { IEmpresa } from './../../model/empresa.model';
 import { EmpresaCadastroComponent } from './empresa-cadastro/empresa-cadastro.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
+import { EmpresaEditarComponent } from './empresa-editar/empresa-editar.component';
 
-const ELEMENT_DATA: Empresa[] = [
+const ELEMENT_DATA: IEmpresa[] = [
   {position: 1, nome: 'Gama Academy', cnpj: 1.0079, endereco: 'H', responsavel: 'H', telefone: 'H', email: 'gama@gama.com'},
   {position: 2, nome: 'Santander', cnpj: 4.0026, endereco: 'He', responsavel: 'H', telefone: 'H', email: 'santander@santander.com' },
   {position: 3, nome: 'Safra', cnpj: 6.941, endereco: 'Li', responsavel: 'H', telefone: 'H', email: 'safra@safra.com' },
@@ -17,12 +18,19 @@ const ELEMENT_DATA: Empresa[] = [
   templateUrl: './empresas.component.html',
   styleUrls: ['./empresas.component.scss']
 })
-export class EmpresasComponent implements OnInit {
+export class EmpresasComponent  {
+row: any;
 
   constructor(public dialog: MatDialog) {}
 
-  ngOnInit(): void {
-
+  edit(row: any) {
+    this.dialog.open(EmpresaEditarComponent, {
+      data: row
+    }).afterClosed().subscribe(val => {
+      if (val === 'atualizado') {
+        //this.getAllProdutos();
+      }
+    })
   }
 
   openDialog() {

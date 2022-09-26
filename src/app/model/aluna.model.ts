@@ -1,4 +1,4 @@
-export interface Aluna {
+export interface IAluna {
   position: number;
   nome: string;
   sobrenome: string;

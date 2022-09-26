@@ -5,11 +5,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './aluna-cadastro.component.html',
   styleUrls: ['./aluna-cadastro.component.scss']
 })
-export class AlunaCadastroComponent implements OnInit {
+export class AlunaCadastroComponent  {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }
