@@ -1,16 +1,25 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {  Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-empresa-cadastro',
   templateUrl: './empresa-cadastro.component.html',
   styleUrls: ['./empresa-cadastro.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 
 })
-export class EmpresaCadastroComponent  {
+export class EmpresaCadastroComponent implements OnInit {
 
-  constructor() { }
+  cursoForm: FormGroup = new FormGroup({});
 
+  constructor(
+    private formBuilder: FormBuilder
+  ) { }
+
+  ngOnInit(){
+    this.cursoForm = this.formBuilder.group({
+      nome: [null, [Validators.required]],
+    })
+  }
 
 
 }
