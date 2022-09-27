@@ -6,11 +6,11 @@ import { MatTableDataSource } from '@angular/material/table';
 import { EmpresaEditarComponent } from './empresa-editar/empresa-editar.component';
 
 const ELEMENT_DATA: IEmpresa[] = [
-  {position: 1, nome: 'Gama Academy', cnpj: 1.0079, endereco: 'H', responsavel: 'H', telefone: 'H', email: 'gama@gama.com'},
-  {position: 2, nome: 'Santander', cnpj: 4.0026, endereco: 'He', responsavel: 'H', telefone: 'H', email: 'santander@santander.com' },
-  {position: 3, nome: 'Safra', cnpj: 6.941, endereco: 'Li', responsavel: 'H', telefone: 'H', email: 'safra@safra.com' },
-  {position: 4, nome: 'DIO', cnpj: 9.0122, endereco: 'Be', responsavel: 'H', telefone: 'H', email: 'dio@dio.com' },
-  {position: 5, nome: 'Coursera', cnpj: 10.811, endereco: 'B', responsavel: 'H', telefone: 'H', email: 'coursera@coursera.com' }
+  {empresa_id: 1, nome: 'Gama Academy', cnpj: 1.0079, endereco: 'H', responsavel: 'H', telefone: 'H', email: 'gama@gama.com'},
+  {empresa_id: 2, nome: 'Santander', cnpj: 4.0026, endereco: 'He', responsavel: 'H', telefone: 'H', email: 'santander@santander.com' },
+  {empresa_id: 3, nome: 'Safra', cnpj: 6.941, endereco: 'Li', responsavel: 'H', telefone: 'H', email: 'safra@safra.com' },
+  {empresa_id: 4, nome: 'DIO', cnpj: 9.0122, endereco: 'Be', responsavel: 'H', telefone: 'H', email: 'dio@dio.com' },
+  {empresa_id: 5, nome: 'Coursera', cnpj: 10.811, endereco: 'B', responsavel: 'H', telefone: 'H', email: 'coursera@coursera.com' }
 ];
 
 @Component({
@@ -42,7 +42,7 @@ row: any;
   }
 
 
-  displayedColumns: string[] = ['position', 'nome', 'cnpj', 'endereco', 'responsavel', 'telefone', 'email', 'actions'];
+  displayedColumns: string[] = ['empresa_id', 'nome', 'cnpj', 'endereco', 'responsavel', 'telefone', 'email', 'actions'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   applyFilter(event: Event) {

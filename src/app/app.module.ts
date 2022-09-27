@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgxMaskModule } from 'ngx-mask';
 import { CursosHistoricoModule } from './pages/cursos-historico/cursos-historico.module';
 import { AlunasModule } from './pages/alunas/alunas.module';
@@ -30,6 +31,7 @@ import { EmpresasModule } from './pages/empresas/empresas.module';
     EmpresasModule,
     AlunasModule,
     CursosHistoricoModule,
+    HttpClientModule,
     NgxMaskModule.forRoot({
       dropSpecialCharacters: false
     })

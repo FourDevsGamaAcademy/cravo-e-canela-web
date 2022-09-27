@@ -1,3 +1,4 @@
+import { CursoService } from './../../../service/curso.service';
 import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
@@ -8,9 +9,9 @@ import { CursoEditarComponent } from '../curso-editar/curso-editar.component';
 
 
 const ELEMENT_DATA: ICurso[] = [
-  { nome: 'Cloud', descricao: 'Serviços da AWS', data_criacao: '01/09/2022', data_inicio: '01/10/2022', data_fim: '30/12/2022', inicio_inscricao: '02/09/2022', fim_inscricao: '15/09/2022', status: '' },
-  { nome: 'Front-End', descricao: 'Javascript e Typescript', data_criacao: '01/09/2022', data_inicio: '01/10/2022', data_fim: '30/12/2022', inicio_inscricao: '02/09/2022', fim_inscricao: '15/09/2022', status: '' },
-  { nome: 'Back-End', descricao: 'Java e Spring', data_criacao: '01/09/2022', data_inicio: '01/10/2022', data_fim: '30/12/2022', inicio_inscricao: '02/09/2022', fim_inscricao: '15/09/2022', status: '' }
+  { curso_id: 1, nome: 'Cloud', descricao: 'Serviços da AWS', carga_horaria: 12, data_criacao: '01/09/2022', data_inicio: '01/10/2022', data_fim: '30/12/2022', inicio_inscricao: '02/09/2022', fim_inscricao: '15/09/2022', status: 'finalizado' },
+  { curso_id: 1, nome: 'Front-End', descricao: 'Javascript e Typescript', carga_horaria: 12, data_criacao: '01/09/2022', data_inicio: '01/10/2022', data_fim: '30/12/2022', inicio_inscricao: '02/09/2022', fim_inscricao: '15/09/2022', status: 'inicializado' },
+  { curso_id: 1, nome: 'Back-End', descricao: 'Java e Spring', carga_horaria: 12, data_criacao: '01/09/2022', data_inicio: '01/10/2022', data_fim: '30/12/2022', inicio_inscricao: '02/09/2022', fim_inscricao: '15/09/2022', status: 'em andamento' }
 ];
 
 @Component({
@@ -24,7 +25,8 @@ export class CursoListaComponent {
 
   constructor(
     public dialog: MatDialog,
-    public router: Router
+    public router: Router,
+    public cursoService: CursoService
   ) { }
 
   edit(row: any) {
@@ -45,8 +47,18 @@ export class CursoListaComponent {
     });
   }
 
+  onDelete(){
+    // this.cursoService.delete(curso_id)
+    // .subscribe(
+    //   ()=>{
+    //     console.log(`deletou registro com id ${curso_id}`);
+    //     //this.getAll();
+    //   }
+    // );
+  }
 
-  displayedColumns: string[] = ['nome', 'descricao', 'data_criacao', 'data_inicio', 'data_fim', 'inicio_inscricao', 'fim_inscricao', 'status', 'actions'];
+
+  displayedColumns: string[] = ['curso_id','nome', 'descricao','carga_horaria', 'data_criacao', 'data_inicio', 'data_fim', 'inicio_inscricao', 'fim_inscricao', 'status', 'actions'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   applyFilter(event: Event) {
