@@ -5,8 +5,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { EmpresaCadastroComponent } from './empresa-cadastro/empresa-cadastro.component';
-import { EmpresaEditarComponent } from './empresa-editar/empresa-editar.component';
 import { NgxMaskModule } from 'ngx-mask';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -14,12 +15,13 @@ import { NgxMaskModule } from 'ngx-mask';
   declarations: [
     EmpresaCadastroComponent,
     EmpresasComponent,
-    EmpresaEditarComponent
   ],
   imports: [
     CommonModule,
     AppMaterialModule,
     SharedModule,
+    HttpClientModule,
+    ReactiveFormsModule,
     NgxMaskModule.forChild(),
   ],
   providers: [

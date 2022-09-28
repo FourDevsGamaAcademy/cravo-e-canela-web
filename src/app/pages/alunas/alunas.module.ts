@@ -6,7 +6,7 @@ import { SharedModule } from './../../shared/shared.module';
 import { AppMaterialModule } from './../../shared/app-material/app-material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AlunaEditarComponent } from './aluna-editar/aluna-editar.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -14,12 +14,12 @@ import { AlunaEditarComponent } from './aluna-editar/aluna-editar.component';
   declarations: [
     AlunaCadastroComponent,
     AlunasComponent,
-    AlunaEditarComponent
   ],
   imports: [
     CommonModule,
     AppMaterialModule,
     SharedModule,
+    ReactiveFormsModule,
     NgxMaskModule.forChild()
   ],
   providers: [

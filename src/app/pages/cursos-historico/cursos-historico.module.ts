@@ -9,7 +9,6 @@ import { CommonModule } from '@angular/common';
 
 import { CursosHistoricoRoutingModule } from './cursos-historico-routing.module';
 import { CursoCadastroComponent } from './curso-cadastro/curso-cadastro.component';
-import { CursoEditarComponent } from './curso-editar/curso-editar.component';
 
 
 @NgModule({
@@ -17,7 +16,6 @@ import { CursoEditarComponent } from './curso-editar/curso-editar.component';
     CursoCadastroComponent,
     CursoListaComponent,
     CursosHistoricoComponent,
-    CursoEditarComponent
   ],
   imports: [
     CommonModule,

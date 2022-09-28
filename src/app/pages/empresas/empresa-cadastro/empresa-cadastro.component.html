@@ -1,39 +1,41 @@
-
-<h2 mat-dialog-title>Complete seu cadastro</h2>
-<mat-dialog-content class="mat-typography">
+<form  [formGroup]="empresaForm" >
+  <h2 mat-dialog-title>Complete seu cadastro</h2>
+  <mat-dialog-content class="mat-typography">
   <section class="container-sm container-md mt-3">
     <div class="mx-auto">
-    <form class="row g-3">
-      <div class="col-md-8">
+      <form class="row g-3">
+        <div class="col-md-8">
       <label for="inputNome" class="form-label">Nome</label>
-      <input type="email" class="form-control" id="inputNome" placeholder="Ex. nome da empresa">
+      <input type="email"formControlName="nome"   class="form-control" id="inputNome" placeholder="Ex. nome da empresa">
     </div>
     <div class="col-md-4">
       <label for="inputCnpj" class="form-label">CNPJ</label>
-      <input type="text" mask="AA.AAA.AAA/0000-AA" class="form-control" id="inputCnpj" placeholder="XX.XXX.XXX/0000-XX">
+      <input type="text" formControlName="cnpj"  mask="AA.AAA.AAA/0000-AA" class="form-control" id="inputCnpj" placeholder="XX.XXX.XXX/0000-XX">
     </div>
     <div class="col-12">
       <label for="inputEndereco" class="form-label">Endereço</label>
-      <input type="text" class="form-control" id="inputEndereco" placeholder="Rua Principal, 1234 - SP">
+      <input type="text" formControlName="endereco"  class="form-control" id="inputEndereco" placeholder="Rua Principal, 1234 - SP">
     </div>
     <div class="col-12">
       <label for="inputResponsavel" class="form-label">Responsável</label>
-      <input type="text" class="form-control" id="inputResponsavel" placeholder="Ex. Executiva Ana Clara">
+      <input type="text" formControlName="responsavel"  class="form-control" id="inputResponsavel" placeholder="Ex. Executiva Ana Clara">
     </div>
     <div class="col-md-5">
       <label for="inputTelefone" class="form-label">Telefone</label>
-      <input type="text" mask="(00) 00000-0000" class="form-control" id="inputTelefone" placeholder="(XX) XXXXX-XXXX">
+      <input type="text" formControlName="telefone"  mask="(000) 0000-0000" class="form-control" id="inputTelefone" placeholder="(XX) XXXXX-XXXX">
     </div>
     <div class="col-md-7">
       <label for="inputEmail" class="form-label">E-mail</label>
-      <input type="text" class="form-control" id="inputEmail" placeholder="empresa@email.com">
+      <input type="text" formControlName="email"  class="form-control" id="inputEmail" placeholder="empresa@email.com">
     </div>
   </form>
-  </div>
-  </section>
+</div>
+</section>
 
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-raised-button mat-dialog-close>Cancelar</button>
-  <button mat-raised-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Salvar</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="true" (click)="salvar()" cdkFocusInitial>{{actionBtn}}</button>
 </mat-dialog-actions>
+
+</form>

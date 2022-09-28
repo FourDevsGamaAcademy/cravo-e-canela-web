@@ -5,7 +5,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { ICurso } from 'src/app/model/curso.model';
 import { CursoCadastroComponent } from '../curso-cadastro/curso-cadastro.component';
-import { CursoEditarComponent } from '../curso-editar/curso-editar.component';
 
 
 const ELEMENT_DATA: ICurso[] = [
@@ -30,7 +29,7 @@ export class CursoListaComponent {
   ) { }
 
   edit(row: any) {
-    this.dialog.open(CursoEditarComponent, {
+    this.dialog.open(CursoCadastroComponent, {
       data: row
     }).afterClosed().subscribe(val => {
       if (val === 'atualizado') {

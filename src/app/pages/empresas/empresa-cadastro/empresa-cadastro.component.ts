@@ -1,5 +1,8 @@
+import { EmpresaService } from './../../../service/empresa.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {  Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-empresa-cadastro',
@@ -7,19 +10,73 @@ import {  Component, OnInit } from '@angular/core';
   styleUrls: ['./empresa-cadastro.component.scss'],
 
 })
-export class EmpresaCadastroComponent implements OnInit {
+export class EmpresaCadastroComponent implements OnInit  {
 
-  cursoForm: FormGroup = new FormGroup({});
+  empresaForm !: FormGroup;
+  actionBtn : string = "Salvar";
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private empresaService: EmpresaService,
+    @Inject(MAT_DIALOG_DATA) public isEdit: any,
+    private dialogRef: MatDialogRef<EmpresaCadastroComponent>,
   ) { }
 
   ngOnInit(){
-    this.cursoForm = this.formBuilder.group({
-      nome: [null, [Validators.required]],
-    })
+    this.empresaForm = this.formBuilder.group({
+      empresaId: [null, [ Validators.required ] ],
+      nome: [ null, [ Validators.required ] ],
+      cnpj: [ null, [ Validators.required ] ],
+      endereco: [ null, [ Validators.required ] ],
+      responsavel: [ null, [ Validators.required ] ],
+      telefone: [ null, [ Validators.required ] ],
+      email: [ null, [ Validators.required ] ],
+
+    });
+
+    if(this.isEdit){
+      this.actionBtn = "Atualizar";
+      this.empresaForm.controls['empresaId'].setValue(this.isEdit.empresaId);
+      this.empresaForm.controls['nome'].setValue(this.isEdit.nome);
+      this.empresaForm.controls['cnpj'].setValue(this.isEdit.cnpj);
+      this.empresaForm.controls['endereco'].setValue(this.isEdit.endereco);
+      this.empresaForm.controls['responsavel'].setValue(this.isEdit.responsavel);
+      this.empresaForm.controls['telefone'].setValue(this.isEdit.telefone);
+      this.empresaForm.controls['email'].setValue(this.isEdit.email);
+    }
+
   }
 
+  salvar(){
+    if(!this.isEdit){
+      if(this.empresaForm.valid){
+        this.empresaService.save(this.empresaForm.value)
+        .subscribe({
+          next:(res)=>{
+            alert("Empresa adicionada")
+            this.empresaForm.reset();
+            this.dialogRef.close('salvo');
+          }, error:()=>{
+            alert("Erro ao adicionar");
+          }
+        });
+      }
+    } else {
+      this.atualizar();
+    }
+  }
 
+  atualizar(){
+    this.empresaService.update(this.empresaForm.value, this.isEdit.empresaId)
+    .subscribe({
+      next:(res)=>{
+        alert("Empresa atualizada");
+        this.empresaForm.reset();
+        this.dialogRef.close('atualizado');
+      },
+      error:()=>{
+        alert("Erro ao atualizar");
+      }
+    })
+  }
 }

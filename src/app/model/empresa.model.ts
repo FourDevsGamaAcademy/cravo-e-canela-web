@@ -1,5 +1,5 @@
 export interface IEmpresa {
-  empresa_id?: number;
+  empresaId?: number;
   nome?: string;
   cnpj?: number;
   endereco?: string;

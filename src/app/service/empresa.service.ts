@@ -11,23 +11,39 @@ export class EmpresaService {
     private httpClient: HttpClient
     ) { }
 
+  // getAll(){
+  //   return this.httpClient.get<IEmpresa[]>(`${environment.api_url}/empresa`);
+  // }
+
+  // save(empresaObj: IEmpresa){
+  //   return this.httpClient.post<IEmpresa>(`${environment.api_url}/empresa`, empresaObj);
+  // }
+
+  // delete(id : number){
+  //   return this.httpClient.delete(`${environment.api_url}/empresa/${id}`);
+  // }
+
+  // getOne(id : number){
+  //   return this.httpClient.get<IEmpresa>(`${environment.api_url}/empresa/${id}`);
+  // }
+
+  // update(id: number, empresaObj: IEmpresa){
+  //   return this.httpClient.patch<IEmpresa>(`${environment.api_url}/empresa/${id}`, empresaObj);
+  // }
+
+  save(data: any){
+    return this.httpClient.post<any>(`http://localhost:8080/empresa/`, data);
+  }
+
   getAll(){
-    return this.httpClient.get<IEmpresa[]>(`${environment.api_url}/empresas`);
+    return this.httpClient.get<any>(`http://localhost:8080/empresa/`);
   }
 
-  save(empresaObj: IEmpresa){
-    return this.httpClient.post<IEmpresa>(`${environment.api_url}/empresas`, empresaObj);
+  update(data: any, empresa_id: number){
+    return this.httpClient.put<any>(`http://localhost:8080/empresa/${empresa_id}`, data);
   }
 
-  delete(id : number){
-    return this.httpClient.delete(`${environment.api_url}/empresas/${id}`);
-  }
-
-  getOne(id : number){
-    return this.httpClient.get<IEmpresa>(`${environment.api_url}/empresas/${id}`);
-  }
-
-  update(id: number, empresaObj: IEmpresa){
-    return this.httpClient.patch<IEmpresa>(`${environment.api_url}/empresas/${id}`, empresaObj);
+  delete(empresa_id: number){
+    return this.httpClient.delete<any>(`http://localhost:8080/empresa/${empresa_id}`);
   }
 }

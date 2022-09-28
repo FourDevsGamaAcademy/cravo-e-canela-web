@@ -11,23 +11,19 @@ export class AlunaService {
     private httpClient: HttpClient
     ) { }
 
-  getAll(){
-    return this.httpClient.get<IAluna[]>(`${environment.api_url}/aluno`);
-  }
+    save(data: any){
+      return this.httpClient.post<any>(`http://localhost:8080/aluno/`, data);
+    }
 
-  save(alunaObj: IAluna){
-    return this.httpClient.post<IAluna>(`${environment.api_url}/aluno`, alunaObj);
-  }
+    getAll(){
+      return this.httpClient.get<any>(`http://localhost:8080/aluno/`);
+    }
 
-  delete(id : number){
-    return this.httpClient.delete(`${environment.api_url}/aluno/${id}`);
-  }
+    update(data: any, aluno_id: number){
+      return this.httpClient.put<any>(`http://localhost:8080/aluno/${aluno_id}`, data);
+    }
 
-  getOne(id : number){
-    return this.httpClient.get<IAluna>(`${environment.api_url}/aluno/${id}`);
-  }
-
-  update(id: number, alunaObj: IAluna){
-    return this.httpClient.patch<IAluna>(`${environment.api_url}/aluno/${id}`, alunaObj);
-  }
+    delete(aluno_id: number){
+      return this.httpClient.delete<any>(`http://localhost:8080/aluno/${aluno_id}`);
+    }
 }
