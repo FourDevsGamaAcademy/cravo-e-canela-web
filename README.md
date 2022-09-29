@@ -1,7 +1,7 @@
 <h1 align="center"> CRAVO&CANELA - Squad 4DEVS (FourDevs) </h1>
 <h3 align="center"> Front-end Angular Cravo&Canela </h3>
 <p align="center">
-<img src="/readme/logo5.JPG" width=225 alt="Logo Cravo&Canela"/>
+<img src="/readme/logo5.jpg" width=225 alt="Logo Cravo&Canela"/>
 </p>
 
 > Status do Projeto: Andamento :warning:
@@ -73,6 +73,12 @@ Tenha o Angular instalado globalmente:
 npm install -g @angular/cli
 ```
 
+Escolha o caminho do projeto pelo terminal:
+
+```
+cd [cravo-e-canela-web]
+```
+
 Instale o pacote node_modules: 
 
 ```
@@ -82,7 +88,6 @@ npm install
 Suba a aplicação:
 
 ```
-cd [PROJECT NAME]
 ng serve -open
 ```
 
