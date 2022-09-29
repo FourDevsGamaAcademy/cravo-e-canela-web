@@ -4,6 +4,7 @@ import { Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { NotificationService } from 'src/app/service/notification.service';
 
 @Component({
   selector: 'app-empresas',
@@ -17,7 +18,7 @@ export class EmpresasComponent {
   constructor(
     private dialog: MatDialog,
     private empresaService: EmpresaService,
-
+    private toastr : NotificationService
   ) {
     this.getAll();
   }
@@ -44,7 +45,8 @@ export class EmpresasComponent {
           this.dataSource.paginator = this.paginator;
         },
         error: () => {
-          alert("Erro ao listar empresas.");
+          this.toastr.showError("Erro ao listar empresas.", "Erro")
+          console.log("Erro ao listar empresas.");
         }
       });
   }
@@ -72,11 +74,13 @@ export class EmpresasComponent {
     this.empresaService.delete(empresaId)
       .subscribe({
         next: (res) => {
-          alert("Empresa deletado.");
+        this.toastr.showSuccess(`Empresa ${empresaId} deletada.`, "Exclusão")
+          console.log("Empresa deletado.");
           this.getAll();
         },
         error: () => {
-          alert("Erro ao deletar empresa.");
+          this.toastr.showError("Erro ao listar empresas.", "Erro")
+          console.log("Erro ao deletar empresa.");
         }
       });
   }

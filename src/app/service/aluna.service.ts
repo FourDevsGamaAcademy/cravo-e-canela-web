@@ -29,7 +29,7 @@ export class AlunaService {
 
 
   getAll(){
-    return this.httpClient.get<IAluna[]>(`${environment.api_url}/alunos`);
+    return this.httpClient.get<IAluna[]>(`${environment.api_url}/alunos/todos`);
   }
 
   save(alunoObj: IAluna){

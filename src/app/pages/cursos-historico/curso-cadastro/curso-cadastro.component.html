@@ -7,43 +7,43 @@
     <form class="row g-3">
       <div class="col-md-6">
       <label for="inputNome" class="form-label">Nome</label>
-      <input type="email"  class="form-control" formControlName="nome" id="inputNome" placeholder="Ex. Cloud">
+      <input type="email"  class="form-control" required formControlName="nome" id="inputNome" placeholder="Ex. Cloud">
     </div>
     <div class="col-md-3">
       <label for="inputDataCriacao" class="form-label">Data criação</label>
-      <input type="date" class="form-control"  formControlName="dataCriacao" id="inputDataCriacao" placeholder="--/--/----">
+      <input type="date" class="form-control"  required formControlName="dataCriacao" id="inputDataCriacao" placeholder="--/--/----">
     </div>
     <div class="col-md-3">
       <label for="inputCargaHoraria" class="form-label">Carga horária</label>
-      <input type="number" min="0" max="4" class="form-control"  formControlName="cargaHoraria" id="inputCargaHoraria" placeholder="Digite uma carga horária">
+      <input type="number" min="0" max="4" class="form-control"  required formControlName="cargaHoraria" id="inputCargaHoraria" placeholder="Digite uma carga horária">
     </div>
     <div class="col-md-12">
       <label for="inputDescricao" class="form-label">Descrição</label>
-      <textarea type="textarea" class="form-control" formControlName="descricao" id="inputDescricao" placeholder="Ex. Descrição do curso"></textarea>
+      <textarea type="textarea" class="form-control" required formControlName="descricao" id="inputDescricao" placeholder="Ex. Descrição do curso"></textarea>
     </div>
     <div class="col-md-6">
       <label for="inputDataInicio" class="form-label">Data início</label>
-      <input type="date" class="form-control" formControlName="dataInicio" id="inputDataInicio" placeholder="--/--/----">
+      <input type="date" class="form-control" required formControlName="dataInicio" id="inputDataInicio" placeholder="--/--/----">
     </div>
     <div class="col-md-6">
       <label for="inputDataFim" class="form-label">Data fim</label>
-      <input type="date" class="form-control" formControlName="dataFim" id="inputDataFim" placeholder="--/--/----">
+      <input type="date" class="form-control" required formControlName="dataFim" id="inputDataFim" placeholder="--/--/----">
     </div>
     <div class="col-md-6">
       <label for="inputInicioInscricao" class="form-label">Início inscrição</label>
-      <input type="date" class="form-control" formControlName="inicioInscricao" id="inputInicioInscricao" placeholder="--/--/----">
+      <input type="date" class="form-control" required formControlName="inicioInscricao" id="inputInicioInscricao" placeholder="--/--/----">
     </div>
     <div class="col-md-6">
       <label for="inputFimInscricao" class="form-label">Fim inscrição</label>
-      <input type="date" class="form-control" formControlName="fimInscricao" id="inputFimInscricao" placeholder="--/--/----">
+      <input type="date" class="form-control" required formControlName="fimInscricao" id="inputFimInscricao" placeholder="--/--/----">
     </div>
     <div class="col-md-6">
       <label for="inputStatus" class="form-label">Status</label>
-      <input type="text" class="form-control" formControlName="statusCurso" id="inputStatus" placeholder="Ex. inicializado">
+      <input type="text" class="form-control" required formControlName="statusCurso" id="inputStatus" placeholder="Ex. inicializado">
     </div>
     <div class="col-md-6">
       <label for="inputEmpresa" class="form-label">Empresa ID</label>
-      <input type="text" class="form-control" formControlName="empresa" id="inputEmpresa" placeholder="Ex. 1">
+      <input type="text" class="form-control" required formControlName="empresa" id="inputEmpresa" placeholder="Ex. 1">
     </div>
   </form>
   </div>

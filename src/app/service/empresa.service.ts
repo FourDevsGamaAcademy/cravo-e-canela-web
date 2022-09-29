@@ -28,7 +28,7 @@ export class EmpresaService {
   // }
 
   getAll(){
-    return this.httpClient.get<IEmpresa[]>(`${environment.api_url}/empresas`);
+    return this.httpClient.get<IEmpresa[]>(`${environment.api_url}/empresas/todos`);
   }
 
   save(cursoObj: IEmpresa){

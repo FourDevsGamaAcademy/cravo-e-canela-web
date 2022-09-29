@@ -2,6 +2,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit, Inject } from '@angular/core';
 import { CursoService } from 'src/app/service/curso.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { NotificationService } from 'src/app/service/notification.service';
 
 @Component({
   selector: 'app-curso-cadastro',
@@ -19,6 +20,7 @@ export class CursoCadastroComponent implements OnInit {
     private cursoService: CursoService,
     @Inject(MAT_DIALOG_DATA) public isEdit: any,
     private dialogRef: MatDialogRef<CursoCadastroComponent>,
+    private toastr: NotificationService
   ) { }
 
   ngOnInit(){
@@ -54,15 +56,17 @@ export class CursoCadastroComponent implements OnInit {
 
   salvar(){
     if(!this.isEdit){
-      if(this.cursoForm.valid){
+      if(this.cursoForm){
         this.cursoService.save(this.cursoForm.value)
         .subscribe({
           next:(res)=>{
-            alert("Cadastro curso adicionado.")
+            this.toastr.showSuccess(`Curso ${this.isEdit.nome} adicionada.`, "Sucesso!")
+            console.log("Cadastro curso adicionado.")
             this.cursoForm.reset();
             this.dialogRef.close('salvo');
           }, error:()=>{
-            alert("Erro ao adicionar");
+            this.toastr.showError(`Erro ao adicionar curso ${this.isEdit.nome}`, "Erro")
+            console.log("Erro ao adicionar");
           }
         });
       }
@@ -72,15 +76,17 @@ export class CursoCadastroComponent implements OnInit {
   }
 
   atualizar(){
-    this.cursoService.update(this.cursoForm.value, this.isEdit.cursoId)
+    this.cursoService.update(this.isEdit.cursoId, this.cursoForm.value)
     .subscribe({
       next:(res)=>{
-        alert("Cadastro curso atualizado.");
+        this.toastr.showSuccess(`Curso ${this.isEdit.nome} atualizado.`, "Sucesso!")
+        console.log("Cadastro curso atualizado.");
         this.cursoForm.reset();
         this.dialogRef.close('atualizado');
       },
       error:()=>{
-        alert("Erro ao atualizar");
+        this.toastr.showError(`Erro ao atualizar curso ${this.isEdit.nome}`, "Erro")
+        console.log("Erro ao atualizar");
       }
     })
   }

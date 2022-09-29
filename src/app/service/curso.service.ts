@@ -29,7 +29,7 @@ export class CursoService {
 
 
   getAll(){
-    return this.httpClient.get<ICurso[]>(`${environment.api_url}/cursos`);
+    return this.httpClient.get<ICurso[]>(`${environment.api_url}/cursos/todos`);
   }
 
   save(cursoObj: ICurso){

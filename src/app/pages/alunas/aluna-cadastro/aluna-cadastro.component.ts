@@ -2,6 +2,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { AlunaService } from './../../../service/aluna.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, Inject, OnInit } from '@angular/core';
+import { NotificationService } from 'src/app/service/notification.service';
 
 @Component({
   selector: 'app-aluna-cadastro',
@@ -18,6 +19,7 @@ export class AlunaCadastroComponent implements OnInit {
     private alunaService: AlunaService,
     @Inject(MAT_DIALOG_DATA) public isEdit: any,
     private dialogRef: MatDialogRef<AlunaCadastroComponent>,
+    private toastr: NotificationService
   ) { }
 
   ngOnInit(){
@@ -51,15 +53,17 @@ export class AlunaCadastroComponent implements OnInit {
 
   salvar(){
     if(!this.isEdit){
-      if(this.alunaForm.valid){
+      if(this.alunaForm){
         this.alunaService.save(this.alunaForm.value)
         .subscribe({
           next:(res)=>{
-            alert("Cadastro aluna adicionada.")
+            this.toastr.showSuccess(`Aluna ${this.isEdit.nome} adicionada.`, "Sucesso!")
+            console.log("Cadastro aluna adicionada.")
             this.alunaForm.reset();
             this.dialogRef.close('salvo');
           }, error:()=>{
-            alert("Erro ao adicionar");
+            this.toastr.showError(`Erro ao adicionar aluna ${this.isEdit.nome}`, "Erro")
+            console.log("Erro ao adicionar");
           }
         });
       }
@@ -69,15 +73,17 @@ export class AlunaCadastroComponent implements OnInit {
   }
 
   atualizar(){
-    this.alunaService.update(this.alunaForm.value, this.isEdit.alunoId)
+    this.alunaService.update(this.isEdit.alunoId, this.alunaForm.value)
     .subscribe({
       next:(res)=>{
-        alert("Cadastro aluna atualizado.");
+        this.toastr.showSuccess(`Aluna ${this.isEdit.nome} atualizada.`, "Sucesso!")
+        console.log("Cadastro aluna atualizado.");
         this.alunaForm.reset();
         this.dialogRef.close('atualizado');
       },
       error:()=>{
-        alert("Erro ao atualizar");
+        this.toastr.showError(`Erro ao atualizar aluna ${this.isEdit.nome}`, "Erro")
+        console.log("Erro ao atualizar");
       }
     })
   }

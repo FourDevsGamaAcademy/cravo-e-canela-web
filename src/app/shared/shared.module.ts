@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
     AppMaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxMaskModule.forChild(),
+    NgxMaskModule.forChild()
   ]
 })
 export class SharedModule { }

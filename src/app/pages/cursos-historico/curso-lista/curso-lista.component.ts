@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Component, ViewChild } from '@angular/core';
 import { CursoCadastroComponent } from '../curso-cadastro/curso-cadastro.component';
 import { MatPaginator } from '@angular/material/paginator';
+import { NotificationService } from 'src/app/service/notification.service';
 
 @Component({
   selector: 'app-curso-lista',
@@ -17,6 +18,7 @@ export class CursoListaComponent {
   constructor(
     private dialog: MatDialog,
     private cursoService: CursoService,
+    private toastr: NotificationService
 
   ) {
     this.getAll();
@@ -41,9 +43,14 @@ export class CursoListaComponent {
         next: (res) => {
           this.dataSource = new MatTableDataSource(res);
           this.dataSource.paginator = this.paginator;
+          for(let i=0; i<this.dataSource.data.length; i++){
+            this.dataSource.filteredData[i]['empresa']['nome'];
+            console.log(this.dataSource.filteredData[i]['empresa']['nome']);
+          }
         },
         error: () => {
-          alert("Erro ao listar cursos.");
+          this.toastr.showError(`Erro ao listar todos cursos.`, "Erro")
+          console.log("Erro ao listar cursos.");
         }
       });
   }
@@ -71,11 +78,13 @@ export class CursoListaComponent {
     this.cursoService.delete(cursoId)
       .subscribe({
         next: (res) => {
-          alert("Curso deletado.");
+          this.toastr.showSuccess(`Curso ${cursoId} deletado.`, "Sucesso!")
+          console.log("Curso deletado.");
           this.getAll();
         },
         error: () => {
-          alert("Erro ao deletar curso.");
+          this.toastr.showError(`Erro ao deletar curso ${cursoId}`, "Sucesso!")
+          console.log("Erro ao deletar curso.");
         }
       });
   }

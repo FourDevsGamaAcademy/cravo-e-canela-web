@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EmpresasModule } from './pages/empresas/empresas.module';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { EmpresasModule } from './pages/empresas/empresas.module';
     HttpClientModule,
     NgxMaskModule.forRoot({
       dropSpecialCharacters: false
-    })
+    }),
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

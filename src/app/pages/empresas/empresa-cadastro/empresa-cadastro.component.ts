@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { NotificationService } from 'src/app/service/notification.service';
 
 @Component({
   selector: 'app-empresa-cadastro',
@@ -20,6 +21,7 @@ export class EmpresaCadastroComponent implements OnInit  {
     private empresaService: EmpresaService,
     @Inject(MAT_DIALOG_DATA) public isEdit: any,
     private dialogRef: MatDialogRef<EmpresaCadastroComponent>,
+    private toastr : NotificationService
   ) { }
 
   ngOnInit(){
@@ -49,15 +51,17 @@ export class EmpresaCadastroComponent implements OnInit  {
 
   salvar(){
     if(!this.isEdit){
-      if(this.empresaForm.valid){
+      if(this.empresaForm){
         this.empresaService.save(this.empresaForm.value)
         .subscribe({
           next:(res)=>{
-            alert("Empresa adicionada")
+            this.toastr.showSuccess(`Empresa ${this.isEdit.nome} adicionada.`, "Sucesso!")
+            console.log("Empresa adicionada")
             this.empresaForm.reset();
             this.dialogRef.close('salvo');
           }, error:()=>{
-            alert("Erro ao adicionar");
+            this.toastr.showError(`Erro ao adicionar ${this.isEdit.nome}.`, "Erro")
+            console.log("Erro ao adicionar");
           }
         });
       }
@@ -67,15 +71,17 @@ export class EmpresaCadastroComponent implements OnInit  {
   }
 
   atualizar(){
-    this.empresaService.update(this.empresaForm.value, this.isEdit.empresaId)
+    this.empresaService.update(this.isEdit.empresaId, this.empresaForm.value)
     .subscribe({
       next:(res)=>{
-        alert("Empresa atualizada");
+        this.toastr.showSuccess(`Empresa ${this.isEdit.nome} atualizada.`, "Sucesso!")
+        console.log("Empresa atualizada");
         this.empresaForm.reset();
         this.dialogRef.close('atualizado');
       },
       error:()=>{
-        alert("Erro ao atualizar");
+        this.toastr.showError(`Erro ao atualizar ${this.isEdit.nome}.`, "Erro")
+        console.log("Erro ao atualizar");
       }
     })
   }

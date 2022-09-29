@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { NotificationService } from 'src/app/service/notification.service';
 
 import { AlunaService } from './../../service/aluna.service';
 import { AlunaCadastroComponent } from './aluna-cadastro/aluna-cadastro.component';
@@ -16,9 +17,12 @@ export class AlunasComponent {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
+  alunoId: number = -1;
+
   constructor(
     private dialog: MatDialog,
     private alunaService: AlunaService,
+    private toastr: NotificationService
 
   ) {
     this.getAll();
@@ -44,7 +48,8 @@ export class AlunasComponent {
           this.dataSource.paginator = this.paginator;
         },
         error: () => {
-          alert("Erro ao listar alunas.");
+          this.toastr.showError(`Erro ao listar alunas.`, "Erro")
+          console.log("Erro ao listar alunas.");
         }
       });
   }
@@ -72,11 +77,13 @@ export class AlunasComponent {
     this.alunaService.delete(alunoId)
       .subscribe({
         next: (res) => {
-          alert("Aluna deletada.");
+          this.toastr.showSuccess(`Aluno ${alunoId} adicionada.`, "Sucesso!")
+          console.log("Aluna deletada.");
           this.getAll();
         },
         error: () => {
-          alert("Erro ao deletar aluna.");
+          this.toastr.showError(`Erro ao deletar aluno ${alunoId}.`, "Erro")
+          console.log("Erro ao deletar aluna.");
         }
       });
   }

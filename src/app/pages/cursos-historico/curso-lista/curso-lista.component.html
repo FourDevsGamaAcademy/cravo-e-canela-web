@@ -15,6 +15,7 @@
   </mat-form-field>
 
   <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"
+  showFirstLastButtons
   aria-label="Select page of users"></mat-paginator>
 
   <div class="table-responsive-lg table-responsive-md table-responsive-sm">
@@ -46,27 +47,27 @@
 
       <ng-container matColumnDef="dataCriacao">
         <th mat-header-cell *matHeaderCellDef class="align-middle text-center px-3">Data criação</th>
-        <td mat-cell *matCellDef="let row" class="text-center">{{ row.dataCriacao }}</td>
+        <td mat-cell *matCellDef="let row" class="text-center">{{ row.dataCriacao | date: 'dd/MM/yyyy' }}</td>
       </ng-container>
 
       <ng-container matColumnDef="dataInicio">
         <th mat-header-cell *matHeaderCellDef class="align-middle text-center px-3">Data início</th>
-        <td mat-cell *matCellDef="let row" class="text-center">{{ row.dataInicio }}</td>
+        <td mat-cell *matCellDef="let row" class="text-center">{{ row.dataInicio | date: 'dd/MM/yyyy' }}</td>
       </ng-container>
 
     <ng-container matColumnDef="dataFim">
       <th mat-header-cell *matHeaderCellDef class="align-middle text-center px-3">Data fim</th>
-      <td mat-cell *matCellDef="let row" class="text-center">{{ row.dataFim }}</td>
+      <td mat-cell *matCellDef="let row" class="text-center">{{ row.dataFim | date: 'dd/MM/yyyy'}}</td>
     </ng-container>
 
     <ng-container matColumnDef="inicioInscricao">
       <th mat-header-cell *matHeaderCellDef class="align-middle text-center px-3">Início inscrição</th>
-      <td mat-cell *matCellDef="let row" class="text-center">{{ row.inicioInscricao }}</td>
+      <td mat-cell *matCellDef="let row" class="text-center">{{ row.inicioInscricao | date: 'dd/MM/yyyy'}}</td>
     </ng-container>
 
     <ng-container matColumnDef="fimInscricao">
       <th mat-header-cell *matHeaderCellDef class="align-middle text-center px-3">Fim inscrição</th>
-      <td mat-cell *matCellDef="let row" class="text-center">{{ row.fimInscricao }}</td>
+      <td mat-cell *matCellDef="let row" class="text-center">{{ row.fimInscricao | date: 'dd/MM/yyyy'}}</td>
     </ng-container>
 
     <ng-container matColumnDef="statusCurso">
