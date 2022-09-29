@@ -1,3 +1,4 @@
+import { ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
 import { CursoService } from './../../service/curso.service';
 import { SharedModule } from './../../shared/shared.module';
@@ -21,6 +22,7 @@ import { CursoCadastroComponent } from './curso-cadastro/curso-cadastro.componen
     CommonModule,
     AppMaterialModule,
     SharedModule,
+    ReactiveFormsModule,
     CursosHistoricoRoutingModule,
     NgxMaskModule.forChild()
   ],

@@ -1,8 +1,9 @@
 import { EmpresaService } from './../../service/empresa.service';
 import { EmpresaCadastroComponent } from './empresa-cadastro/empresa-cadastro.component';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-empresas',
@@ -10,6 +11,8 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./empresas.component.scss']
 })
 export class EmpresasComponent {
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(
     private dialog: MatDialog,
@@ -38,6 +41,7 @@ export class EmpresasComponent {
       .subscribe({
         next: (res) => {
           this.dataSource = new MatTableDataSource(res);
+          this.dataSource.paginator = this.paginator;
         },
         error: () => {
           alert("Erro ao listar empresas.");
@@ -68,11 +72,11 @@ export class EmpresasComponent {
     this.empresaService.delete(empresaId)
       .subscribe({
         next: (res) => {
-          alert("Empresa deletado");
+          alert("Empresa deletado.");
           this.getAll();
         },
         error: () => {
-          alert("Erro ao deletar empresa");
+          alert("Erro ao deletar empresa.");
         }
       });
   }

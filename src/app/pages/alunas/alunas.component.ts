@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 
 import { AlunaService } from './../../service/aluna.service';
@@ -14,9 +14,7 @@ import { AlunaCadastroComponent } from './aluna-cadastro/aluna-cadastro.componen
 })
 export class AlunasComponent {
 
-  row: any;
-  alunaForm : FormGroup = new FormGroup({});
-
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(
     private dialog: MatDialog,
@@ -43,6 +41,7 @@ export class AlunasComponent {
       .subscribe({
         next: (res) => {
           this.dataSource = new MatTableDataSource(res);
+          this.dataSource.paginator = this.paginator;
         },
         error: () => {
           alert("Erro ao listar alunas.");
@@ -82,5 +81,3 @@ export class AlunasComponent {
       });
   }
 }
-
-

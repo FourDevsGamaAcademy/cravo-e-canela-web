@@ -32,7 +32,6 @@ export class AlunaCadastroComponent implements OnInit {
       telefone: [ null, [ Validators.required ] ],
       endereco: [ null, [ Validators.required ] ],
       email: [ null, [ Validators.required ] ],
-
     });
 
     if(this.isEdit){
@@ -48,7 +47,6 @@ export class AlunaCadastroComponent implements OnInit {
       this.alunaForm.controls['endereco'].setValue(this.isEdit.endereco);
       this.alunaForm.controls['email'].setValue(this.isEdit.email);
     }
-
   }
 
   salvar(){

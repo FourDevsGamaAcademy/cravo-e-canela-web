@@ -1,3 +1,4 @@
+<form [formGroup]="cursoForm">
 
 <h2 mat-dialog-title>Complete seu cadastro</h2>
 <mat-dialog-content class="mat-typography">
@@ -6,39 +7,39 @@
     <form class="row g-3">
       <div class="col-md-6">
       <label for="inputNome" class="form-label">Nome</label>
-      <input type="email" class="form-control" id="inputNome" placeholder="Ex. Cloud">
+      <input type="email"  class="form-control" formControlName="nome" id="inputNome" placeholder="Ex. Cloud">
     </div>
     <div class="col-md-3">
       <label for="inputDataCriacao" class="form-label">Data criação</label>
-      <input type="date" class="form-control"  id="inputDataCriacao" placeholder="--/--/----">
+      <input type="date" class="form-control"  formControlName="dataCriacao" id="inputDataCriacao" placeholder="--/--/----">
     </div>
     <div class="col-md-3">
       <label for="inputCargaHoraria" class="form-label">Carga horária</label>
-      <input type="number" min="0" max="4" class="form-control"  id="inputCargaHoraria" placeholder="Digite uma carga horária">
+      <input type="number" min="0" max="4" class="form-control"  formControlName="cargaHoraria" id="inputCargaHoraria" placeholder="Digite uma carga horária">
     </div>
     <div class="col-md-12">
       <label for="inputDescricao" class="form-label">Descrição</label>
-      <textarea type="textarea" class="form-control" id="inputDescricao" placeholder="Ex. Descrição do curso"></textarea>
+      <textarea type="textarea" class="form-control" formControlName="descricao" id="inputDescricao" placeholder="Ex. Descrição do curso"></textarea>
     </div>
     <div class="col-md-6">
       <label for="inputDataInicio" class="form-label">Data início</label>
-      <input type="date" class="form-control" id="inputDataInicio" placeholder="--/--/----">
+      <input type="date" class="form-control" formControlName="dataInicio" id="inputDataInicio" placeholder="--/--/----">
     </div>
     <div class="col-md-6">
       <label for="inputDataFim" class="form-label">Data fim</label>
-      <input type="date" class="form-control" id="inputDataFim" placeholder="--/--/----">
+      <input type="date" class="form-control" formControlName="dataFim" id="inputDataFim" placeholder="--/--/----">
     </div>
     <div class="col-md-6">
       <label for="inputInicioInscricao" class="form-label">Início inscrição</label>
-      <input type="date" class="form-control" id="inputInicioInscricao" placeholder="--/--/----">
+      <input type="date" class="form-control" formControlName="inicioInscricao" id="inputInicioInscricao" placeholder="--/--/----">
     </div>
     <div class="col-md-6">
       <label for="inputFimInscricao" class="form-label">Fim inscrição</label>
-      <input type="date" class="form-control" id="inputFimInscricao" placeholder="--/--/----">
+      <input type="date" class="form-control" formControlName="fimInscricao" id="inputFimInscricao" placeholder="--/--/----">
     </div>
     <div class="col-md-6">
       <label for="inputStatus" class="form-label">Status</label>
-      <input type="text" class="form-control" id="inputStatus" placeholder="Ex. inicializado">
+      <input type="text" class="form-control" formControlName="statusCurso" id="inputStatus" placeholder="Ex. inicializado">
     </div>
   </form>
   </div>
@@ -46,6 +47,7 @@
 
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-raised-button mat-dialog-close>Cancel</button>
-  <button mat-raised-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Salvar</button>
+  <button mat-raised-button mat-dialog-close>Cancelar</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="true" (click)="salvar()" cdkFocusInitial>Salvar</button>
 </mat-dialog-actions>
+</form>

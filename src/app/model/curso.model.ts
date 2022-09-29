@@ -1,14 +1,14 @@
 export interface ICurso {
-  curso_id: number;
- // empresa_id: string;
+  cursoId?: number;
+  empresa?: any;
   nome?: string;
   descricao?: string;
-  carga_horaria?: number;
-  data_criacao?: string;
-  data_inicio?: string;
-  data_fim?: string;
-  inicio_inscricao?: string;
-  fim_inscricao?: string;
-  status?: string;
+  cargaHoraria?: number;
+  dataCriacao?: string;
+  dataInicio?: string;
+  dataFim?: string;
+  inicioInscricao?: string;
+  fimInscricao?: string;
+  statusCurso?: any;
 }
 

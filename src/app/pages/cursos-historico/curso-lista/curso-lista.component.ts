@@ -1,17 +1,9 @@
 import { CursoService } from './../../../service/curso.service';
-import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
-import { Component, OnInit } from '@angular/core';
-import { ICurso } from 'src/app/model/curso.model';
+import { Component, ViewChild } from '@angular/core';
 import { CursoCadastroComponent } from '../curso-cadastro/curso-cadastro.component';
-
-
-const ELEMENT_DATA: ICurso[] = [
-  { curso_id: 1, nome: 'Cloud', descricao: 'Serviços da AWS', carga_horaria: 12, data_criacao: '01/09/2022', data_inicio: '01/10/2022', data_fim: '30/12/2022', inicio_inscricao: '02/09/2022', fim_inscricao: '15/09/2022', status: 'finalizado' },
-  { curso_id: 1, nome: 'Front-End', descricao: 'Javascript e Typescript', carga_horaria: 12, data_criacao: '01/09/2022', data_inicio: '01/10/2022', data_fim: '30/12/2022', inicio_inscricao: '02/09/2022', fim_inscricao: '15/09/2022', status: 'inicializado' },
-  { curso_id: 1, nome: 'Back-End', descricao: 'Java e Spring', carga_horaria: 12, data_criacao: '01/09/2022', data_inicio: '01/10/2022', data_fim: '30/12/2022', inicio_inscricao: '02/09/2022', fim_inscricao: '15/09/2022', status: 'em andamento' }
-];
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-curso-lista',
@@ -20,49 +12,72 @@ const ELEMENT_DATA: ICurso[] = [
 })
 export class CursoListaComponent {
 
-  row: any;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(
-    public dialog: MatDialog,
-    public router: Router,
-    public cursoService: CursoService
-  ) { }
+    private dialog: MatDialog,
+    private cursoService: CursoService,
+
+  ) {
+    this.getAll();
+  }
+
+  openDialog() {
+    this.dialog.open(CursoCadastroComponent, {
+    }).afterClosed().subscribe(val => {
+      if (val === 'salvo') {
+        this.getAll();
+      }
+    })
+  }
+
+
+  displayedColumns: string[] = ['cursoId', 'empresa', 'nome', 'descricao','cargaHoraria', 'dataCriacao', 'dataInicio', 'dataFim', 'inicioInscricao', 'fimInscricao', 'statusCurso', 'actions'];
+  dataSource!: MatTableDataSource<any>;
+
+  getAll() {
+    this.cursoService.getAll()
+      .subscribe({
+        next: (res) => {
+          this.dataSource = new MatTableDataSource(res);
+          this.dataSource.paginator = this.paginator;
+        },
+        error: () => {
+          alert("Erro ao listar cursos.");
+        }
+      });
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
 
   edit(row: any) {
     this.dialog.open(CursoCadastroComponent, {
       data: row
     }).afterClosed().subscribe(val => {
       if (val === 'atualizado') {
-        //this.getAllProdutos();
+        this.getAll();
       }
     })
   }
 
-  openDialog() {
-    const dialogRef = this.dialog.open(CursoCadastroComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
-
-  onDelete(){
-    // this.cursoService.delete(curso_id)
-    // .subscribe(
-    //   ()=>{
-    //     console.log(`deletou registro com id ${curso_id}`);
-    //     //this.getAll();
-    //   }
-    // );
-  }
-
-
-  displayedColumns: string[] = ['curso_id','nome', 'descricao','carga_horaria', 'data_criacao', 'data_inicio', 'data_fim', 'inicio_inscricao', 'fim_inscricao', 'status', 'actions'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  delete(cursoId: number) {
+    this.cursoService.delete(cursoId)
+      .subscribe({
+        next: (res) => {
+          alert("Curso deletado.");
+          this.getAll();
+        },
+        error: () => {
+          alert("Erro ao deletar curso.");
+        }
+      });
   }
 
 }

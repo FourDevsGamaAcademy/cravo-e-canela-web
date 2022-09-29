@@ -11,39 +11,39 @@ export class EmpresaService {
     private httpClient: HttpClient
     ) { }
 
+  // save(data: any){
+  //   return this.httpClient.post<any>(`http://localhost:8080/empresas/`, data);
+  // }
+
   // getAll(){
-  //   return this.httpClient.get<IEmpresa[]>(`${environment.api_url}/empresa`);
+  //   return this.httpClient.get<any>(`http://localhost:8080/empresas/`);
   // }
 
-  // save(empresaObj: IEmpresa){
-  //   return this.httpClient.post<IEmpresa>(`${environment.api_url}/empresa`, empresaObj);
+  // update(data: any, empresa_id: number){
+  //   return this.httpClient.put<any>(`http://localhost:8080/empresas/${empresa_id}`, data);
   // }
 
-  // delete(id : number){
-  //   return this.httpClient.delete(`${environment.api_url}/empresa/${id}`);
+  // delete(empresa_id: number){
+  //   return this.httpClient.delete<any>(`http://localhost:8080/empresas/${empresa_id}`);
   // }
-
-  // getOne(id : number){
-  //   return this.httpClient.get<IEmpresa>(`${environment.api_url}/empresa/${id}`);
-  // }
-
-  // update(id: number, empresaObj: IEmpresa){
-  //   return this.httpClient.patch<IEmpresa>(`${environment.api_url}/empresa/${id}`, empresaObj);
-  // }
-
-  save(data: any){
-    return this.httpClient.post<any>(`http://localhost:8080/empresa/`, data);
-  }
 
   getAll(){
-    return this.httpClient.get<any>(`http://localhost:8080/empresa/`);
+    return this.httpClient.get<IEmpresa[]>(`${environment.api_url}/empresas`);
   }
 
-  update(data: any, empresa_id: number){
-    return this.httpClient.put<any>(`http://localhost:8080/empresa/${empresa_id}`, data);
+  save(cursoObj: IEmpresa){
+    return this.httpClient.post<IEmpresa>(`${environment.api_url}/empresas`, cursoObj);
   }
 
-  delete(empresa_id: number){
-    return this.httpClient.delete<any>(`http://localhost:8080/empresa/${empresa_id}`);
+  delete(id : number){
+    return this.httpClient.delete(`${environment.api_url}/empresas/${id}`);
+  }
+
+  getOne(id : number){
+    return this.httpClient.get<IEmpresa>(`${environment.api_url}/empresas/${id}`);
+  }
+
+  update(id: number, cursoObj: IEmpresa){
+    return this.httpClient.put<IEmpresa>(`${environment.api_url}/empresas/${id}`, cursoObj);
   }
 }
