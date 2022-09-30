@@ -76,7 +76,7 @@ npm install -g @angular/cli
 Escolha o caminho do projeto pelo terminal:
 
 ```
-cd [cravo-e-canela-web]
+cd cravo-e-canela-web
 ```
 
 Instale o pacote node_modules: 
