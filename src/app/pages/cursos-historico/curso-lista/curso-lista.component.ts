@@ -15,6 +15,8 @@ export class CursoListaComponent {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
+  cursoId: number = -1;
+
   constructor(
     private dialog: MatDialog,
     private cursoService: CursoService,

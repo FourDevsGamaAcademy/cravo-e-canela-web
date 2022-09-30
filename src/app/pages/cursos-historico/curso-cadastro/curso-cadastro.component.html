@@ -11,7 +11,7 @@
     </div>
     <div class="col-md-3">
       <label for="inputDataCriacao" class="form-label">Data criação</label>
-      <input type="date" class="form-control"  required formControlName="dataCriacao" id="inputDataCriacao" placeholder="--/--/----">
+      <input type="text" class="form-control" mask="0000-00-00" required formControlName="dataCriacao" id="inputDataCriacao" >
     </div>
     <div class="col-md-3">
       <label for="inputCargaHoraria" class="form-label">Carga horária</label>
@@ -23,26 +23,31 @@
     </div>
     <div class="col-md-6">
       <label for="inputDataInicio" class="form-label">Data início</label>
-      <input type="date" class="form-control" required formControlName="dataInicio" id="inputDataInicio" placeholder="--/--/----">
+      <input type="text" class="form-control" required mask="0000-00-00" formControlName="dataInicio" id="inputDataInicio">
     </div>
     <div class="col-md-6">
       <label for="inputDataFim" class="form-label">Data fim</label>
-      <input type="date" class="form-control" required formControlName="dataFim" id="inputDataFim" placeholder="--/--/----">
+      <input type="text" class="form-control" required mask="0000-00-00" formControlName="dataFim" id="inputDataFim">
     </div>
     <div class="col-md-6">
       <label for="inputInicioInscricao" class="form-label">Início inscrição</label>
-      <input type="date" class="form-control" required formControlName="inicioInscricao" id="inputInicioInscricao" placeholder="--/--/----">
+      <input type="text" class="form-control" required mask="0000-00-00" formControlName="inicioInscricao" id="inputInicioInscricao">
     </div>
     <div class="col-md-6">
       <label for="inputFimInscricao" class="form-label">Fim inscrição</label>
-      <input type="date" class="form-control" required formControlName="fimInscricao" id="inputFimInscricao" placeholder="--/--/----">
+      <input type="text" class="form-control" required mask="0000-00-00" formControlName="fimInscricao" id="inputFimInscricao">
     </div>
     <div class="col-md-6">
       <label for="inputStatus" class="form-label">Status</label>
-      <input type="text" class="form-control" required formControlName="statusCurso" id="inputStatus" placeholder="Ex. inicializado">
+      <select class="form-select" required formControlName="statusCurso" aria-label="statusCurso">
+        <option value="CADASTRADO">CADASTRADO</option>
+        <option value="INICIADO">INICIADO</option>
+        <option value="EM_ANDAMENTO">EM ANDAMENTO</option>
+        <option value="FINALIZADO">FINALIZADO</option>
+      </select>
     </div>
     <div class="col-md-6">
-      <label for="inputEmpresa" class="form-label">Empresa ID</label>
+      <label for="inputEmpresa" class="form-label">Empresa</label>
       <input type="text" class="form-control" required formControlName="empresa" id="inputEmpresa" placeholder="Ex. 1">
     </div>
   </form>

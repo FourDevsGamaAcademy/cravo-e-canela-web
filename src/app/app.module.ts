@@ -14,11 +14,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EmpresasModule } from './pages/empresas/empresas.module';
 import { ToastrModule } from 'ngx-toastr';
+import { InscricoesComponent } from './pages/inscricoes/inscricoes.component';
+import { InscricoesCadastroComponent } from './pages/inscricoes/inscricoes-cadastro/inscricoes-cadastro.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomePageComponent
+    HomePageComponent,
+    InscricoesComponent,
+    InscricoesCadastroComponent
 
   ],
   imports: [

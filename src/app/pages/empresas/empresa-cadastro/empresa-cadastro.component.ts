@@ -55,12 +55,12 @@ export class EmpresaCadastroComponent implements OnInit  {
         this.empresaService.save(this.empresaForm.value)
         .subscribe({
           next:(res)=>{
-            this.toastr.showSuccess(`Empresa ${this.isEdit.nome} adicionada.`, "Sucesso!")
+            this.toastr.showSuccess(`Empresa adicionada.`, "Sucesso!")
             console.log("Empresa adicionada")
             this.empresaForm.reset();
             this.dialogRef.close('salvo');
           }, error:()=>{
-            this.toastr.showError(`Erro ao adicionar ${this.isEdit.nome}.`, "Erro")
+            this.toastr.showError(`Erro ao adicionar.`, "Erro")
             console.log("Erro ao adicionar");
           }
         });

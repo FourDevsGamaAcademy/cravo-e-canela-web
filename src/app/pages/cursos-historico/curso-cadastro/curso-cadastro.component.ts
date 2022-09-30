@@ -1,3 +1,4 @@
+import { IEmpresa } from './../../../model/empresa.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit, Inject } from '@angular/core';
 import { CursoService } from 'src/app/service/curso.service';
@@ -13,6 +14,7 @@ export class CursoCadastroComponent implements OnInit {
 
   cursoForm !: FormGroup;
   actionBtn : string = "Salvar";
+  cursoId: number = -1;
 
 
   constructor(
@@ -27,6 +29,7 @@ export class CursoCadastroComponent implements OnInit {
     this.cursoForm = this.formBuilder.group({
       cursoId: [null, [ Validators.required ] ],
       empresa: [null, [ Validators.required ] ],
+      empresaId: [null, [ Validators.required ] ],
       nome: [ null, [ Validators.required ] ],
       descricao: [ null, [ Validators.required ] ],
       cargaHoraria: [ null, [ Validators.required ] ],
@@ -41,7 +44,6 @@ export class CursoCadastroComponent implements OnInit {
     if(this.isEdit){
       this.actionBtn = "Atualizar";
       this.cursoForm.controls['cursoId'].setValue(this.isEdit.cursoId);
-      this.cursoForm.controls['empresa'].setValue(this.isEdit.empresa);
       this.cursoForm.controls['nome'].setValue(this.isEdit.sobrenome);
       this.cursoForm.controls['descricao'].setValue(this.isEdit.descricao);
       this.cursoForm.controls['cargaHoraria'].setValue(this.isEdit.cargaHoraria);
@@ -51,6 +53,8 @@ export class CursoCadastroComponent implements OnInit {
       this.cursoForm.controls['inicioInscricao'].setValue(this.isEdit.inicioInscricao);
       this.cursoForm.controls['fimInscricao'].setValue(this.isEdit.fimInscricao);
       this.cursoForm.controls['statusCurso'].setValue(this.isEdit.statusCurso);
+      this.cursoForm.controls['empresa'].setValue(this.isEdit.empresa);
+      this.cursoForm.controls['empresaId'].setValue(this.isEdit.empresaId);
     }
   }
 
@@ -60,12 +64,12 @@ export class CursoCadastroComponent implements OnInit {
         this.cursoService.save(this.cursoForm.value)
         .subscribe({
           next:(res)=>{
-            this.toastr.showSuccess(`Curso ${this.isEdit.nome} adicionada.`, "Sucesso!")
+            this.toastr.showSuccess(`Curso adicionada.`, "Sucesso!")
             console.log("Cadastro curso adicionado.")
             this.cursoForm.reset();
             this.dialogRef.close('salvo');
           }, error:()=>{
-            this.toastr.showError(`Erro ao adicionar curso ${this.isEdit.nome}`, "Erro")
+            this.toastr.showError(`Erro ao adicionar curso.`, "Erro")
             console.log("Erro ao adicionar");
           }
         });

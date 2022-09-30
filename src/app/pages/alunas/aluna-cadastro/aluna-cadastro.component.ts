@@ -57,13 +57,13 @@ export class AlunaCadastroComponent implements OnInit {
         this.alunaService.save(this.alunaForm.value)
         .subscribe({
           next:(res)=>{
-            this.toastr.showSuccess(`Aluna ${this.isEdit.nome} adicionada.`, "Sucesso!")
+            this.toastr.showSuccess(`Aluna adicionada.`, "Sucesso!")
             console.log("Cadastro aluna adicionada.")
             this.alunaForm.reset();
             this.dialogRef.close('salvo');
           }, error:()=>{
-            this.toastr.showError(`Erro ao adicionar aluna ${this.isEdit.nome}`, "Erro")
-            console.log("Erro ao adicionar");
+            this.toastr.showError(`Erro ao adicionar aluna.`, "Erro")
+            console.log("Erro ao adicionar" + Error);
           }
         });
       }

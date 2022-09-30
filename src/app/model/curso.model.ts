@@ -1,6 +1,6 @@
 export interface ICurso {
   cursoId?: number;
-  empresa?: any;
+  empresaId?: number;
   nome?: string;
   descricao?: string;
   cargaHoraria?: number;

@@ -11,23 +11,6 @@ export class AlunaService {
     private httpClient: HttpClient
     ) { }
 
-    // save(data: any){
-    //   return this.httpClient.post<any>(`http://localhost:8080/alunos/`, data);
-    // }
-
-    // getAll(){
-    //   return this.httpClient.get<any>(`http://localhost:8080/alunos/`);
-    // }
-
-    // update(data: any, aluno_id: number){
-    //   return this.httpClient.put<any>(`http://localhost:8080/alunos/${aluno_id}`, data);
-    // }
-
-    // delete(aluno_id: number){
-    //   return this.httpClient.delete<any>(`http://localhost:8080/alunos/${aluno_id}`);
-    // }
-
-
   getAll(){
     return this.httpClient.get<IAluna[]>(`${environment.api_url}/alunos/todos`);
   }
