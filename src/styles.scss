@@ -10,6 +10,9 @@ h1, h2, h3, h4, h5, h6{
   font-family: 'Source Sans Pro', sans-serif !important;
 }
 
-table {
-  border-spacing: 5px!important;
+th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+  padding: 5px!important;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  vertical-align: middle;
 }
