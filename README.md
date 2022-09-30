@@ -64,6 +64,7 @@
 ### Pré requisitos
 
 - Instale o [Node.js] que contenha [Node Package Manager][npm]
+- Subir a API do repositório plataforma-cursos conectada ao banco de dados
 
 ### Clonando nosso projeto:
 
