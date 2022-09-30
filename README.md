@@ -1,7 +1,7 @@
 <h1 align="center"> CRAVO&CANELA - Squad 4DEVS (FourDevs) </h1>
 <h3 align="center"> Front-end Angular Cravo&Canela </h3>
 <p align="center">
-<img src="/readme/logo5.jpg" width=225 alt="Logo Cravo&Canela"/>
+<img src="/readme/logocravo.jpg" width=225 alt="Logo Cravo&Canela"/>
 </p>
 
 > Status do Projeto: Andamento :warning:
