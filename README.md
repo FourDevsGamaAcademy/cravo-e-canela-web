@@ -18,7 +18,7 @@
 <h3>Valores: </h3>
 <p align="justify">Ética; Transparência (clareza nas relações); Inovação; Respeito.</p>
 
-<h2 align="center" > Documentação do Projeto </h3>
+<h2 align="center" > Documentação do Projeto Geral </h3>
 
 <h4> Tecnologias, Metodologias e Soluções Utilizadas </h4>
 
@@ -59,7 +59,7 @@
     - Swagger.
     
     
-    ## Ambiente de desenvolvimento 4DEVS
+    ## Documentação ambiente front-end - Cravo e Canela
 
 ### Pré requisitos
 
@@ -93,7 +93,7 @@ ng serve -open
 
 
 
-<h2 align="center"> Desenvolvedoras </h2>
+<h2 align="center"> Desenvolvedoras do projeto Cravo&Canela </h2>
 <p align="justify">Aryane Maria Valentim Teixeira;</p>
 <p align="justify">Caroline Tavares;</p>
 <p align="justify">Deborah Yohana B. da Silva;</p>
